@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZAMONAVIY FANLAR</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        body {
+            background-color: #080c14;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            padding: 20px 0;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            padding: 0 20px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0 40px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+        }
+
+        .logo-icon {
+            background-color: #d1ff00;
+            color: #080c14;
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .logo-text {
+            font-weight: 700;
+            font-size: 16px;
+            color: #ffffff;
+        }
+
+        .header-menu {
+            display: flex;
+            gap: 24px;
+        }
+
+        .header-menu p {
+            color: #94a3b8;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .header-menu p:hover {
+            color: #ffffff;
+        }
+
+        .hero {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 40px 0 60px 0;
+            gap: 40px;
+        }
+
+        .hero-left {
+            max-width: 500px;
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 0.05);
+            color: #64748b;
+            padding: 6px 12px;
+            border-radius: 12px;
+            font-size: 11px;
+            margin-bottom: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .hero-title {
+            font-size: 48px;
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-title span {
+            color: #d1ff00;
+        }
+
+        .hero-description {
+            color: #94a3b8;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 32px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn-primary {
+            background-color: #d1ff00;
+            color: #080c14;
+            padding: 12px 22px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 13px;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        .btn-secondary {
+            background-color: #111827;
+            color: #ffffff;
+            padding: 12px 22px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 13px;
+            border: 1px solid #1f2937;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .btn-primary:hover, .btn-secondary:hover {
+            opacity: 0.9;
+        }
+
+        .hero-right {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            background-color: #0d1322;
+            padding: 24px 32px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            margin-top: 20px;
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .stat-number {
+            font-size: 28px;
+            font-weight: 800;
+            color: #d1ff00;
+        }
+
+        .stat-label {
+            color: #64748b;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .fanlar {
+            margin-top: 60px;
+        }
+
+        .fanlar-title {
+            font-size: 28px;
+            font-weight: 500;
+        }
+
+        .fanlar-sub {
+            color: #94a3b8;
+            font-size: 13px;
+            margin: 8px 0 24px 0;
+        }
+
+        .fanlar-wrap {
+            position: relative;
+            padding: 0 30px;
+        }
+
+        .kartalar {
+            display: flex;
+            gap: 20px;
+        }
+
+        .karta {
+            width: 25%;
+            background-color: #0d1322;
+            border: 1px solid #243056;
+            border-radius: 14px;
+            padding: 24px 18px;
+            min-height: 150px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .karta:hover {
+            transform: translateY(-4px);
+            border-color: #3b4c85;
+        }
+
+        .ikonka {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .karta-nom {
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .karta-matn {
+            color: #94a3b8;
+            font-size: 12.5px;
+            line-height: 1.5;
+        }
+
+        .afzallik {
+            margin-top: 40px;
+        }
+
+        .afzallik-kartalar {
+            display: flex;
+            gap: 20px;
+        }
+
+        .afzallik-karta {
+            flex: 1;
+            background-color: #0d1322;
+            border: 1px solid #243056;
+            border-radius: 14px;
+            padding: 22px 20px;
+            min-height: 130px;
+            transition: transform 0.2s;
+        }
+
+        .afzallik-karta:hover {
+            transform: translateY(-4px);
+        }
+
+        .afzallik-nom {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .afzallik-matn {
+            color: #94a3b8;
+            font-size: 12.5px;
+            line-height: 1.5;
+        }
+
+        .afzallik-karta.aktiv {
+            background-color: #c6f432;
+            border-color: #c6f432;
+        }
+
+        .afzallik-karta.aktiv .afzallik-nom {
+            color: #080c14;
+        }
+
+        .afzallik-karta.aktiv .afzallik-matn {
+            color: #1a2008;
+        }
+
+        .oqish {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .oqish-rasm {
+            width: 50%;
+        }
+
+        .oqish-rasm img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 18px;
+        }
+
+        .oqish-matn {
+            width: 50%;
+        }
+
+        .oqish-title {
+            font-size: 28px;
+            font-weight: 500;
+            margin-bottom: 28px;
+        }
+
+        .qadam {
+            display: flex;
+            gap: 14px;
+            margin-bottom: 24px;
+        }
+
+        .raqam {
+            width: 28px;
+            height: 28px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            background-color: #c6f432;
+            color: #080c14;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .qadam-nom {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .qadam-matn {
+            color: #94a3b8;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .tariflar {
+            margin-top: 60px;
+        }
+
+        .tariflar-title {
+            font-size: 28px;
+            font-weight: 500;
+            margin-bottom: 24px;
+        }
+
+        .tarif-kartalar {
+            display: flex;
+            gap: 20px;
+        }
+
+        .tarif-karta {
+            flex: 1;
+            background-color: #0d1322;
+            border: 1px solid #243056;
+            border-radius: 14px;
+            padding: 24px 22px;
+            transition: transform 0.2s;
+        }
+
+        .tarif-karta:hover {
+            transform: translateY(-4px);
+        }
+
+        .tarif-nom {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .tarif-narx {
+            font-size: 24px;
+            font-weight: 500;
+            color: #5bc8ff;
+            margin-bottom: 14px;
+        }
+
+        .tarif-matn {
+            color: #94a3b8;
+            font-size: 12.5px;
+            line-height: 1.8;
+        }
+
+        .tarif-karta.aktiv {
+            background-color: #c6f432;
+            border-color: #c6f432;
+        }
+
+        .tarif-karta.aktiv .tarif-nom,
+        .tarif-karta.aktiv .tarif-narx {
+            color: #080c14;
+        }
+
+        .tarif-karta.aktiv .tarif-matn {
+            color: #1a2008;
+        }
+
+        .cta {
+            margin-top: 40px;
+            background-color: #0f1a3a;
+            border: 1px solid #243056;
+            border-radius: 18px;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .cta-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .cta-sub {
+            color: #94a3b8;
+            font-size: 13px;
+            margin-bottom: 24px;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background-color: #c6f432;
+            color: #080c14;
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        .cta-btn:hover {
+            opacity: 0.9;
+        }
+
+        .cta-links {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 24px;
+            color: #94a3b8;
+            font-size: 12px;
+        }
+
+        .cta-links p {
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .cta-links p:hover {
+            color: #ffffff;
+        }
+
+        footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 40px;
+            padding: 20px 0;
+            border-top: 1px solid #1a2238;
+        }
+
+        .footer-logo {
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .footer-copy {
+            color: #64748b;
+            font-size: 11px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <div class="logo">
+                <div class="logo-icon">&lt;&gt;</div>
+                <p class="logo-text">Modern Subjects</p>
+            </div>
+            <div class="header-menu">
+                <p>Courses</p>
+                <p>Benefits</p>
+                <p>Contact</p>
+            </div>
+        </header>
+
+        <div class="hero">
+            <div class="hero-left">
+                <p class="badge">IT Training Center</p>
+                <h1 class="hero-title">A profession of the future<br><span>Learn</span> today</h1>
+                <p class="hero-description">
+                    Programming, Design, and Artificial Intelligence — Practical Lessons,<br>
+                    with modern computers and experienced instructors.
+                </p>
+                <div class="hero-buttons">
+                    <p class="btn-primary">Enroll now</p>
+                    <p class="btn-secondary">View courses</p>
+                </div>
+            </div>
+
+            <div class="hero-right">
+                <img src="image.png" alt="Monitor" class="hero-img">
+            </div>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-item">
+                <p class="stat-number">[00]+</p>
+                <p class="stat-label">graduates</p>
+            </div>
+            <div class="stat-item">
+                <p class="stat-number">[00]</p>
+                <p class="stat-label">experienced mentors</p>
+            </div>
+            <div class="stat-item">
+                <p class="stat-number">[00]</p>
+                <p class="stat-label">modern computers</p>
+            </div>
+            <div class="stat-item">
+                <p class="stat-number">[00]%</p>
+                <p class="stat-label">those who have found employment</p>
+            </div>
+        </div>
+
+        <div class="fanlar">
+            <p class="fanlar-title">Modern Subjects</p>
+            <p class="fanlar-sub">Choose the direction that suits you.</p>
+
+            <div class="fanlar-wrap">
+                <div class="kartalar">
+                    <div class="karta">
+                        <div class="ikonka">💻</div>
+                        <p class="karta-nom">Coding</p>
+                        <p class="karta-matn">Start from scratch with Python, JavaScript, and practical projects.</p>
+                    </div>
+
+                    <div class="karta">
+                        <div class="ikonka">🖥️</div>
+                        <p class="karta-nom">Web and Graphic Design</p>
+                        <p class="karta-matn">Learn to create beautiful websites and interfaces.</p>
+                    </div>
+
+                    <div class="karta">
+                        <div class="ikonka">🛡️</div>
+                        <p class="karta-nom">Cybersecurity</p>
+                        <p class="karta-matn">Fundamentals of data protection and network security.</p>
+                    </div>
+
+                    <div class="karta">
+                        <div class="ikonka">🤖</div>
+                        <p class="karta-nom">Artificial Intelligence</p>
+                        <p class="karta-matn">Master AI tools and working with data.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="afzallik">
+            <div class="afzallik-kartalar">
+                <div class="afzallik-karta aktiv">
+                    <p class="afzallik-nom">A computer for every student</p>
+                    <p class="afzallik-matn">Every minute of class is devoted to practice.</p>
+                </div>
+
+                <div class="afzallik-karta">
+                    <p class="afzallik-nom">Small groups</p>
+                    <p class="afzallik-matn">The teacher gives each student enough attention.</p>
+                </div>
+
+                <div class="afzallik-karta">
+                    <p class="afzallik-nom">Real projects</p>
+                    <p class="afzallik-matn">By the end of the course, your own portfolio will be ready.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="oqish">
+            <div class="oqish-rasm">
+                <img src="photo_2026-10-26_14-35-18.jpg" alt="Students at computers">
+            </div>
+
+            <div class="oqish-matn">
+                <p class="oqish-title">How do we study?</p>
+
+                <div class="qadam">
+                    <div class="raqam">1</div>
+                    <div>
+                        <p class="qadam-nom">Trial lesson</p>
+                        <p class="qadam-matn">You choose your direction in a free introductory lesson.</p>
+                    </div>
+                </div>
+
+                <div class="qadam">
+                    <div class="raqam">2</div>
+                    <div>
+                        <p class="qadam-nom">Practical classes</p>
+                        <p class="qadam-matn">Theory is short, main time is spent at the computer.</p>
+                    </div>
+                </div>
+
+                <div class="qadam">
+                    <div class="raqam">3</div>
+                    <div>
+                        <p class="qadam-nom">Final project and certificate</p>
+                        <p class="qadam-matn">Defend your own project and get a certificate.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tariflar">
+            <p class="tariflar-title">Plans</p>
+
+            <div class="tarif-kartalar">
+                <div class="tarif-karta">
+                    <p class="tarif-nom">Beginner</p>
+                    <p class="tarif-narx">[price] UZS</p>
+                    <p class="tarif-matn">Group lessons<br>3 times a week<br>Basic course materials</p>
+                </div>
+
+                <div class="tarif-karta aktiv">
+                    <p class="tarif-nom">Standard</p>
+                    <p class="tarif-narx">[price] UZS</p>
+                    <p class="tarif-matn">Group lessons<br>5 times a week<br>Mentor support</p>
+                </div>
+
+                <div class="tarif-karta">
+                    <p class="tarif-nom">Individual</p>
+                    <p class="tarif-narx">[price] UZS</p>
+                    <p class="tarif-matn">One-on-one lessons<br>Flexible schedule<br>Personal study plan</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta">
+            <p class="cta-title">Start today</p>
+            <p class="cta-sub">Sign up for a course and step into the digital world.</p>
+            <p class="cta-btn">[+998 00 000 00 00]</p>
+
+            <div class="cta-links">
+                <p>[telegram]</p>
+                <p>[instagram]</p>
+                <p>[address]</p>
+            </div>
+        </div>
+
+        <footer>
+            <p class="footer-logo">Modern Subjects</p>
+            <p class="footer-copy">© 2026 Modern Subjects. All rights reserved.</p>
+        </footer>
+
+    </div>
+</body>
+</html>
